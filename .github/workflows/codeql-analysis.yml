@@ -35,8 +35,8 @@ jobs:
         languages: javascript, java
 
     - uses: github/codeql-action/init@v1
-    with:
-      config-file: ./.github/codeql/codeql-config.yml
+      with:
+        config-file: ./.github/codeql/codeql-config.yml
     
     # Java 11
     - name: Set up JDK 1.11
