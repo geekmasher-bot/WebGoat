@@ -32,12 +32,9 @@ jobs:
       uses: github/codeql-action/init@v1
       # Override language selection by uncommenting this and choosing your languages
       with:
+        config-file: ./.github/codeql/codeql-config.yml
         languages: javascript, java
 
-    - uses: github/codeql-action/init@v1
-      with:
-        config-file: ./.github/codeql/codeql-config.yml
-    
     # Java 11
     - name: Set up JDK 1.11
       uses: actions/setup-java@v1
