@@ -1,0 +1,5 @@
+name: "My CodeQL config"
+
+queries:
+  - name: Code Scanning using improved Spring Support
+    uses: lcartey/ql/java/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql@java/untrusted-data-to-external-api-290620
