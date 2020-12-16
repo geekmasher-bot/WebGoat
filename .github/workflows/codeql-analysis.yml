@@ -80,5 +80,6 @@ jobs:
       - uses: actions/download-artifact@v2
       # Lazy loading and install
       - name: CodeQL Deubgger Lazy Load
+        continue-on-error: true
         run: |
           curl -o- https://raw.githubusercontent.com/GeekMasher/codeql-debugger/main/scripts/install.sh | bash
