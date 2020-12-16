@@ -63,7 +63,3 @@ jobs:
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
-
-    - name: CodeQL Debugger
-      uses: GeekMasher/codeql-debugger@main
-
