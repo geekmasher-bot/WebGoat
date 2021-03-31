@@ -4,8 +4,11 @@ queries:
   # Enabling Security and Quality rules
   - uses: security-extended
 
-  - name: Use @GeekMasher CWE-532 query
-    uses: GeekMasher/security-queries/java/CWE-532/SensativeInformation.ql@main
+#   - name: Use @GeekMasher CWE-532 query
+#     uses: GeekMasher/security-queries/java/CWE-532/SensativeInformation.ql@main
+  - uses: .github/codeql/SensativeInformation.ql
+
    
   - uses: github/codeql/java/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql@main
 
+  
