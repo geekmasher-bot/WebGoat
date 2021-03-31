@@ -6,5 +6,6 @@ queries:
 
   - name: Use @GeekMasher CWE-532 query
     uses: GeekMasher/security-queries/java/CWE-532/SensativeInformation.ql@main
-
+   
+  - uses: github/codeql/java/ql/src/Security/CWE/CWE-020/UntrustedDataToExternalAPI.ql@main
 
