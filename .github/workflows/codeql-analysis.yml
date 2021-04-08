@@ -38,7 +38,7 @@ jobs:
       with:
         languages: ${{ matrix.language }}
         # Point to a custom configuration
-        config-file: ./.github/codeql/codeql-config.yml
+        config-file: GeekMasher/security-queries/config/codeql.yml@main
 
     - name: Add CodeQL Customizations
       uses: GeekMasher/security-queries/customize@main
