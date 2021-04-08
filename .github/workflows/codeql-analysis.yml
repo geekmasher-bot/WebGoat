@@ -41,7 +41,7 @@ jobs:
         config-file: GeekMasher/security-queries/config/codeql.yml@main
 
     - name: Add CodeQL Customizations
-      uses: GeekMasher/security-queries/customize@main
+      uses: GeekMasher/security-queries/customize@customize-action
 
     # Java 11
     - name: Set up JDK 1.11
