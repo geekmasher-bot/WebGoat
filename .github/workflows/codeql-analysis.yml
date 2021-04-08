@@ -40,6 +40,9 @@ jobs:
         # Point to a custom configuration
         config-file: ./.github/codeql/codeql-config.yml
 
+    - name: Add CodeQL Customizations
+      uses: GeekMasher/security-queries/customize@main
+
     # Java 11
     - name: Set up JDK 1.11
       if: matrix.language == 'java'
