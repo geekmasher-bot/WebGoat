@@ -56,14 +56,3 @@ jobs:
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
 
-    - name: Debug Analysis
-      uses: GeekMasher/codeql-debug@master
-      with:
-        language: ${{ matrix.language }}
-
-    - name: Upload loc as a Build Artifact
-      uses: actions/upload-artifact@v2.2.0
-      with:
-        name: codeql-debug-results-${{ matrix.language }}
-        path: codeql-debug-results
-        retention-days: 30
