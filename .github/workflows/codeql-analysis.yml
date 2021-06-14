@@ -37,7 +37,7 @@ jobs:
      # Delombok the code before the building step occurs
     - name: Delombok
       if: matrix.language == 'java'
-      uses: lcartey/delombok-action@main
+      uses: GeekMasher/delombok-action@main
 
     # Use mvn command
     - run: mvn clean install --file pom.xml
