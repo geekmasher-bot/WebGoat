@@ -20,24 +20,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v1
-      with:
-        languages: ${{ matrix.language }}
-        queries: +security-extended
-
+    
     # WebGoat requires Java/JDK 11
     - name: Set up JDK 1.11
       if: matrix.language == 'java'
       uses: actions/setup-java@v1
       with:
         java-version: 1.11
+    # CodeQL does not support Project Lombok
+    - name: Delombok WebGoat
+      uses: advanced-security/delombok-action@webgoat
 
-     # Delombok the code before the building step occurs
-    - name: Delombok
-      if: matrix.language == 'java'
-      uses: GeekMasher/delombok-action@main
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v1
+      with:
+        languages: ${{ matrix.language }}
+        queries: +security-extended
 
     # Use mvn command
     - run: mvn clean install --file pom.xml
