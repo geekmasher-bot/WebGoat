@@ -1,3 +1,4 @@
+
 /*
  * This file is part of WebGoat, an Open Web Application Security Project utility. For details, please see http://www.owasp.org/
  *
@@ -36,11 +37,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import static org.hsqldb.jdbc.JDBCResultSet.CONCUR_UPDATABLE;
-import static org.hsqldb.jdbc.JDBCResultSet.TYPE_SCROLL_SENSITIVE;
+import static java.sql.ResultSet.CONCUR_READ_ONLY;
+import static org.hsqldb.jdbc.JDBCResultSet.*;
 
 @RestController
-@AssignmentHints(value = {"SqlStringInjectionHint.11.1", "SqlStringInjectionHint.11.2", "SqlStringInjectionHint.11.3", "SqlStringInjectionHint.11.4", "SqlStringInjectionHint.11.5"})
+@AssignmentHints(value = {"SqlStringInjectionHint.9.1", "SqlStringInjectionHint.9.2", "SqlStringInjectionHint.9.3", "SqlStringInjectionHint.9.4", "SqlStringInjectionHint.9.5"})
 public class SqlInjectionLesson11 extends AssignmentEndpoint {
 
     private final DataSource dataSource;
@@ -69,19 +70,19 @@ public class SqlInjectionLesson11 extends AssignmentEndpoint {
                         output.append(SqlInjectionLesson8.generateTable(results));
                     } else {
                         // no results
-                        return failed(this).feedback("sql-injection.8.no.results").build();
+                        return trackProgress(failed().feedback("sql-injection.8.no.results").build());
                     }
                 }
             } catch (SQLException e) {
                 System.err.println(e.getMessage());
-                return failed(this).feedback("sql-injection.error").output("<br><span class='feedback-negative'>" + e.getMessage() + "</span>").build();
+                return trackProgress(failed().feedback("sql-injection.error").output("<br><span class='feedback-negative'>" + e.getMessage() + "</span>").build());
             }
 
             return checkSalaryRanking(connection, output);
 
         } catch (Exception e) {
             System.err.println(e.getMessage());
-            return failed(this).feedback("sql-injection.error").output("<br><span class='feedback-negative'>" + e.getMessage() + "</span>").build();
+            return trackProgress(failed().feedback("sql-injection.error").output("<br><span class='feedback-negative'>" + e.getMessage() + "</span>").build());
         }
     }
 
@@ -96,13 +97,13 @@ public class SqlInjectionLesson11 extends AssignmentEndpoint {
                 // user completes lesson if John Smith is the first in the list
                 if ((results.getString(2).equals("John")) && (results.getString(3).equals("Smith"))) {
                     output.append(SqlInjectionLesson8.generateTable(results));
-                    return success(this).feedback("sql-injection.11.success").output(output.toString()).build();
+                    return trackProgress(success().feedback("sql-injection.9.success").output(output.toString()).build());
                 } else {
-                    return failed(this).feedback("sql-injection.11.one").output(output.toString()).build();
+                    return trackProgress(failed().feedback("sql-injection.9.one").output(output.toString()).build());
                 }
             }
         } catch (SQLException e) {
-            return failed(this).feedback("sql-injection.error").output("<br><span class='feedback-negative'>" + e.getMessage() + "</span>").build();
+            return trackProgress(failed().feedback("sql-injection.error").output("<br><span class='feedback-negative'>" + e.getMessage() + "</span>").build());
         }
     }
 
